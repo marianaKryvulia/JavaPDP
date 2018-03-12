@@ -1,4 +1,4 @@
-package com.epam.pdp;
+package com.epam.java.pdp;
 
 import java.util.Scanner;
 
