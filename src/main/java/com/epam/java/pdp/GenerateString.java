@@ -1,7 +1,7 @@
 package com.epam.java.pdp;
 
 public class GenerateString {
-    static int lenght = 5;
+    static int length = 5;
     static String str = "" ;
 
     public static void main (String[] args){
@@ -9,7 +9,7 @@ public class GenerateString {
     }
 
 public static void generateString() {
-     for (int i = 0; i< lenght; ++i ){
+     for (int i = 0; i< length; ++i ){
          str = str + "a";
      }
     System.out.println("Generated random default length string:" +str);

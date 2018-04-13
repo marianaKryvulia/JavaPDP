@@ -5,7 +5,7 @@ public class TShirt {
     /**
      * Here I define instance data
      */
-    private String sex = "male";
+    public String sex = "male";
     private String size = "xl";
     private String color = "white";
     private String style = "casual";
@@ -13,7 +13,7 @@ public class TShirt {
     public TShirt (){
         count++;
         System.out.println();
-        System.out.println("Allocation memory for new Tshirt instance " +TShirt.count);
+        System.out.println(TShirt.count);
 
 }
 
