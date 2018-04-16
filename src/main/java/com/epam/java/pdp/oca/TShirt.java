@@ -5,7 +5,7 @@ public class TShirt {
     /**
      * Here I define instance data
      */
-    public String sex = "male";
+    private String sex = "male";
     private String size = "xl";
     private String color = "white";
     private String style = "casual";
