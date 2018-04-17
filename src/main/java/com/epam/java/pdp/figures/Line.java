@@ -1,11 +1,18 @@
 package com.epam.java.pdp.figures;
 import com.epam.java.pdp.figures.Point;
 public class Line {
-    private int start;
-    private int end;
-    public Line(int startPoint, int endPoint){
+    Point start;
+    Point end;
+    Line (Point startPoint, Point endPoint){
+        if (startPoint == null || endPoint == null)
+        {
+           throw new RuntimeException();
+        }
         this.start = startPoint;
         this.end = endPoint;
     }
-
+    double lineLength(){
+        double length = Math.sqrt((end.x - start.x)*(end.x - start.x) + (start.y - end.y)*(start.y - end.y));
+        return length;
+    }
 }
