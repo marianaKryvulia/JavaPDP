@@ -10,7 +10,6 @@ public class ShapeApp {
         final Point p3 = new Point(2, 1);
         Shape triangle = new Shape(p1, p2, p3);
         triangle.isTriangle();
-        triangle.areLinesOnTheSingleLine();
         triangle.isTriangleRectangular();
         triangle.isTriangleIsosceles();
 //        System.out.println("Perimeter is: " + (triangle.a + triangle.b + triangle.c));

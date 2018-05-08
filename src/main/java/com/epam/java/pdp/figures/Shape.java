@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Shape {
     List<Point> points;
-    List<Double> lines;
+    List<Double> lineLengths;
 
     public Shape(Point... points) {
         this.points = new ArrayList<>();
@@ -18,44 +18,53 @@ public class Shape {
 
     boolean isTriangle() {
         if (points.size() == 3) {
-            System.out.println("This is triangle");
+//            calculateLineLengths();
+            arePointsOnTheSingleLine();
+            System.out.println("This is a triangle");
         }
         return true;
+
     }
 
 
-    double calculateLines() {
-        this.lines = new ArrayList<>();
-        for (int i = 0; i < points.size(); ++i) {
-            if (i != points.size()) {
-                Line ln = (this.points.get(i), this.points.get(i++));
-                this.lines.add(ln.lineLength((this.points.get(i)), this.points.get(i++)));
-            } else {
-                Line ln = (this.points.get(i), this.points.get(0));
-                this.lines.add(ln.lineLength((this.points.get(i)), this.points.get(i++)));
+    void calculateLineLengths() {
+        this.lineLengths = new ArrayList<>();
+        for (int i = 0; i < points.size(); i++) {
+            Point start = points.get(i);
+            int endIndex = i + 1;
+            if (endIndex == points.size()) {
+                endIndex = 0;
             }
+            Point end = this.points.get(endIndex);
+            Line line = new Line(start, end);
+            double length = line.lineLength();
+            lineLengths.add(length);
+
         }
 
     }
 
-    double areLinesOnTheSingleLine() {
+    void arePointsOnTheSingleLine() {
+        calculateLineLengths();
         double maxLength = 0;
 //        for (int i=0; i< points.size(); i++){
 //            if (lines.get(i) > maxLength){
 //                maxLength = lines.get(i);
 //            }
 //        }
-        for (int i = 0; i < points.size(); ++i) {
-            if (maxLength == lines.get(i) + lines.get(i++)) {
+        for (int i = 0; i < points.size(); i++) {
+//            int nextIndex = i + 1;
+            if (maxLength == lineLengths.get(i) + lineLengths.get(i++)) {
                 System.out.println("Points are on the same line.");
             } else {
                 System.out.println("Points are not on the single line.");
             }
         }
-        return maxLength;
+        for (Double maxLineLength : lineLengths) {
+        }
     }
 
-    boolean isTriangleRectangular() {
+    void isTriangleRectangular() {
 
 //        if (((a * a) == ((b * b) + (c * c))) ||
 //                ((b * b) == ((a * a) + (c * c))) ||
@@ -65,16 +74,17 @@ public class Shape {
 //        } else {
 //            System.out.println("Triangle is not Rectangular.");
 //        }
-        return false;
+
     }
 
-    boolean isTriangleIsosceles() {
+
+    void isTriangleIsosceles() {
 //        if (a == b || b == c || c == a) {
 //            System.out.println("Triangle is Isosceles.");
 //            return true;
 //        } else {
 //            System.out.println("Triangle is not Isosceles.");
 //        }
-        return false;
+//        return false;
     }
 }

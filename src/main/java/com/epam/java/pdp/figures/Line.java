@@ -12,7 +12,7 @@ public class Line {
         this.end = endPoint;
     }
 
-    public double lineLength(Point start, Point end) {
+    public double lineLength() {
         double length = Math.sqrt((end.x - start.x) * (end.x - start.x) + (start.y - end.y) * (start.y - end.y));
         return length;
     }
