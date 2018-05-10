@@ -5,9 +5,9 @@ public class Line {
     Point end;
 
     Line(Point startPoint, Point endPoint) {
-//        if (startPoint == null || endPoint == null) {
-//            throw new RuntimeException();
-//        }
+        if (startPoint == null || endPoint == null) {
+            throw new RuntimeException();
+        }
         this.start = startPoint;
         this.end = endPoint;
     }

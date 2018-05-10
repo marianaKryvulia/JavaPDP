@@ -1,12 +1,12 @@
 package com.epam.java.pdp.figures;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Shape {
     List<Point> points;
     List<Double> lineLengths;
+    boolean oneLine;
 
     public Shape(Point... points) {
         this.points = new ArrayList<>();
@@ -16,13 +16,13 @@ public class Shape {
     }
 
 
-    boolean isTriangle() {
-        if (points.size() == 3) {
-//            calculateLineLengths();
+    void isTriangle() {
+        if (oneLine == false & (points.size() == 3)) {
             arePointsOnTheSingleLine();
             System.out.println("This is a triangle");
+        } else {
+            System.out.println("This shape is not a triangle");
         }
-        return true;
 
     }
 
@@ -44,24 +44,31 @@ public class Shape {
 
     }
 
-    void arePointsOnTheSingleLine() {
+    boolean arePointsOnTheSingleLine() {
         calculateLineLengths();
         double maxLength = 0;
-//        for (int i=0; i< points.size(); i++){
-//            if (lines.get(i) > maxLength){
-//                maxLength = lines.get(i);
-//            }
-//        }
-        for (int i = 0; i < points.size(); i++) {
-//            int nextIndex = i + 1;
-            if (maxLength == lineLengths.get(i) + lineLengths.get(i++)) {
-                System.out.println("Points are on the same line.");
-            } else {
-                System.out.println("Points are not on the single line.");
+
+        for (int i = 0; i < lineLengths.size(); i++) {
+            if (lineLengths.get(i) > maxLength) {
+                maxLength = lineLengths.get(i);
             }
         }
-        for (Double maxLineLength : lineLengths) {
+        for (int i = 0; i < lineLengths.size(); i++) {
+            int nextIndex = i + 1;
+            if (nextIndex == lineLengths.size()) {
+                nextIndex = 0;
+            }
+            if (maxLength == lineLengths.get(i) + lineLengths.get(nextIndex)) {
+                System.out.println("Points are on the same line.");
+                oneLine = true;
+            } else {
+                System.out.println("Points are not on the single line.");
+                oneLine = false;
+
+            }
+
         }
+        return oneLine;
     }
 
     void isTriangleRectangular() {
