@@ -13,7 +13,8 @@ public class Line {
     }
 
     public double lineLength() {
-        double length = Math.sqrt((end.x - start.x) * (end.x - start.x) + (start.y - end.y) * (start.y - end.y));
-        return length;
+        double catetByX = end.x - start.x;
+        double catetByY = start.y - end.y;
+        return Math.sqrt(catetByX * catetByX + catetByY * catetByY);
     }
 }

@@ -14,21 +14,23 @@ public class Shape {
         for (Point point : points) {
             this.points.add(point);
         }
+        this.lineLengths = calculateLineLengths();
     }
 
 
-    void isTriangle() {
-        if (!arePointsOnTheSingleLine() & (points.size() == 3)) {
+    boolean isTriangle() {
+        if ((points.size() == 3) && !arePointsOnTheSingleLine()) {
             System.out.println("This is a triangle");
+            return true;
         } else {
             System.out.println("This shape is not a triangle");
         }
-
+        return false;
     }
 
 
-     private void calculateLineLengths() {
-        this.lineLengths = new ArrayList<>();
+    private List<Double> calculateLineLengths() {
+        List<Double> lineLengths = new ArrayList<>();
         for (int i = 0; i < points.size(); i++) {
             Point start = points.get(i);
             int endIndex = i + 1;
@@ -39,15 +41,12 @@ public class Shape {
             Line line = new Line(start, end);
             double length = line.lineLength();
             lineLengths.add(length);
-
         }
-
+        return lineLengths;
     }
 
     private boolean arePointsOnTheSingleLine() {
-        calculateLineLengths();
         double maxLength = 0;
-
         for (int i = 0; i < lineLengths.size(); i++) {
             if (lineLengths.get(i) > maxLength) {
                 maxLength = lineLengths.get(i);
@@ -60,30 +59,29 @@ public class Shape {
             }
             if (maxLength == lineLengths.get(i) + lineLengths.get(nextIndex)) {
                 return true;
-            } else {
-                return false;
-
             }
         }
-        return true;
+        return false;
     }
 
-    void isTriangleRectangular() {
-        double a = lineLengths.get(0);
-        double b = lineLengths.get(1);
-        double c = lineLengths.get(2);
-        if (((a * a) == ((b * b) + (c * c))) ||
-                ((b * b) == ((a * a) + (c * c))) ||
-                ((c * c) == ((a * a) + (b * b)))) {
+    public boolean isTriangleRectangular() {
+        if (!isTriangle()) {
+            return false;
+        }
+        if (((lineLengths.get(0) * lineLengths.get(0)) == ((lineLengths.get(1) * lineLengths.get(1)) + (lineLengths.get(2) * lineLengths.get(2)))) ||
+                ((lineLengths.get(1) * lineLengths.get(1)) == ((lineLengths.get(0) * lineLengths.get(0)) + (lineLengths.get(2) * lineLengths.get(2)))) ||
+                ((lineLengths.get(2) * lineLengths.get(2)) == ((lineLengths.get(0) * lineLengths.get(0)) + (lineLengths.get(1) * lineLengths.get(1))))) {
             System.out.println("Triangle is Rectangular.");
+            return true;
         } else {
             System.out.println("Triangle is not Rectangular.");
         }
 
+        return false;
     }
 
 
-    void isTriangleIsosceles() {
+    public void isTriangleIsosceles() {
         if (lineLengths.get(0).equals(lineLengths.get(1)) || lineLengths.get(1).equals(lineLengths.get(2)) || lineLengths.get(2).equals(lineLengths.get(0))) {
             System.out.println("Triangle is Isosceles.");
         } else {
