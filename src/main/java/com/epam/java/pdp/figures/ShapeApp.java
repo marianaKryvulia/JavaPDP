@@ -12,5 +12,6 @@ public class ShapeApp {
         triangle.isTriangle();
         triangle.isTriangleRectangular();
         triangle.isTriangleIsosceles();
+
     }
 }

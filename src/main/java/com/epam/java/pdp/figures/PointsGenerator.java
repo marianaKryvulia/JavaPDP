@@ -7,7 +7,7 @@ import java.util.Random;
 public class PointsGenerator {
     List<Point> points = new ArrayList<>();
 
-    public void craeteBunchOfPoints() {
+    public void createBunchOfPoints() {
         final int randomCount = new Random().nextInt(200);
         for (int i = 0; i < randomCount; i++) {
             final Point point = new Point(i, i + 1);
