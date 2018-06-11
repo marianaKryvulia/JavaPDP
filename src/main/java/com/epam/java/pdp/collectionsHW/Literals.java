@@ -24,7 +24,7 @@ public class Literals {
         String str = in.nextLine();
         while (str.equalsIgnoreCase("quit") == false) {
             if (hmap.containsKey(str.toLowerCase())) {
-                System.out.println(str + " "+", (no calculations happened, result has been taken from a cache)");
+                System.out.println(hmap.get(str) + ", (no calculations happened, result has been taken from a cache)");
                 System.out.println("Enter another item or \"quit\" to exit");
                 str = in.nextLine();
             } else {
@@ -36,7 +36,7 @@ public class Literals {
                 }
 
                 hmap.put(str, uniqueChars.size());
-                System.out.println(str + " "+ uniqueChars.size());
+                System.out.println(str + " " + uniqueChars.size());
             }
 
             System.out.println("Enter another item or \"quit\" to exit");
@@ -44,4 +44,5 @@ public class Literals {
         }
 
     }
+
 }
