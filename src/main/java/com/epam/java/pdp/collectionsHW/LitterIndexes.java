@@ -1,7 +1,7 @@
 package com.epam.java.pdp.collectionsHW;
 
-import java.util.*;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 //Ex1:
@@ -17,18 +17,28 @@ public class LitterIndexes {
         System.out.println("Enter the string or \"quit\" to exit :");
         HashMap<Character, ArrayList<Integer>> hm = new HashMap<Character, ArrayList<Integer>>();
         String str = in.nextLine();
+        long start = System.currentTimeMillis();
         for (int i = 0; i < str.length(); i++) {
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int j = 0; j < str.length(); j++) {
-                if (str.charAt(i) == str.charAt(j)) {
-                    indexes.add(j);
-                }
+            final Character letter = str.charAt(i);
+            ArrayList<Integer> indexes;
+            if ((indexes = hm.get(letter)) == null) {
+                indexes = new ArrayList<Integer>();
+                hm.put(letter, indexes);
             }
-            hm.put(str.charAt(i), indexes);
+            indexes.add(i);
+//            for (int j = 0; j < str.length(); j++) {
+//                if (letter == str.charAt(j)) {
+//                    indexes.add(j);
+//                }
+//            }
+//            hm.put(letter, indexes);
         }
+
+        //TODO: Home work sort
         System.out.println(hm.toString());
         System.out.println("Enter another item or \"quit\" to exit");
-//            for (int i = 0; i < str.length(); i++) {
+        System.out.println("Time to execute="+(System.currentTimeMillis() - start));
+        //            for (int i = 0; i < str.length(); i++) {
 ////                System.out.println(str.charAt(i) + " " + i);
 //                List<Integer> index = new ArrayList<Integer>();
 //                index.add(str.indexOf(str.charAt(i)));
