@@ -16,7 +16,7 @@ import java.util.Scanner;
 //        output 3: 5
 //        input 4: "edcba"
 //        output 4: 5
-public class Literals {
+public class Letters {
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
         HashMap<String, Integer> hmap = new HashMap<String, Integer>();
