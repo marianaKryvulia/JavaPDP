@@ -10,6 +10,10 @@ public class Rectangle implements Shape {
 
     List<Point> points;
 
+    public Rectangle(List<Point> points) {
+        this.points = points;
+    }
+
     public List<Double> lineLegth() {
         List<Double> lineLength = new ArrayList<>();
         for (int i = 0; i < points.size(); i++) {
@@ -37,7 +41,7 @@ public class Rectangle implements Shape {
     }
 
 
-    public boolean isRectangleIquilateral(List<Double> lineLegth ){
+    public boolean isRectangleIquilateral(List<Double> lineLegth) {
         return true;
     }
 }

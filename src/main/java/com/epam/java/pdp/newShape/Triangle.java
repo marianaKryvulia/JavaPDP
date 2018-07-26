@@ -5,9 +5,13 @@ import com.epam.java.pdp.figures.Line;
 import java.util.List;
 
 public class Triangle implements Shape {
+
     String shapeType;
     List<Point> points;
     List<Double> lineLengths;
+    public Triangle(List<Point> points){
+        this.points = points;
+    }
 
     public String shapeType() {
 
@@ -18,4 +22,5 @@ public class Triangle implements Shape {
         double perimeter = lineLengths.stream().mapToDouble(Double::doubleValue).sum();
         return perimeter;
     }
+
 }
