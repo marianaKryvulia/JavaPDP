@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class First {
 
-        /**
-         * Selecting the min value
-         * @param args
-         */
         public static void main(String[] args) {
             method1();
             oddValues(args);
