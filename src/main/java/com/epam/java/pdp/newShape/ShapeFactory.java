@@ -14,9 +14,18 @@ public class ShapeFactory {
             return null;
         }
     }
+
     public Rectangle createRectangleIfPossible(List<Point> points) {
         if (points.size() == 4) {
             return new Rectangle(points);
+        } else {
+            return null;
+        }
+    }
+
+    public Pentagon createPentagonIfPossible(List<Point> points) {
+        if (points.size() == 5) {
+            return new Pentagon(points);
         } else {
             return null;
         }

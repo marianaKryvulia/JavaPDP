@@ -1,6 +1,6 @@
 package com.epam.java.pdp.newShape;
 import com.epam.java.pdp.figures.Point;
-import com.epam.java.pdp.figures.Line;
+
 
 import java.util.List;
 
