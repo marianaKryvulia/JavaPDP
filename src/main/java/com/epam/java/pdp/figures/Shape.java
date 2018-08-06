@@ -1,7 +1,7 @@
 package com.epam.java.pdp.figures;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.text.html.HTMLDocument;
+import java.util.*;
 
 public class Shape {
     List<Point> points;
@@ -10,6 +10,7 @@ public class Shape {
 
 
     public Shape(Point... points) {
+        Queue q = new LinkedList();
         this.points = new ArrayList<>();
         for (Point point : points) {
             this.points.add(point);
@@ -89,4 +90,33 @@ public class Shape {
         }
 
     }
+
+    public void isSquare() {
+        boolean isSquare = false;
+        double sideLength = lineLengths.get(0);
+        for (int i = 1; i < lineLengths.size(); i++) {
+            if (lineLengths.get(i).equals(sideLength)) {
+                isSquare = true;
+                // return true;
+            } else {
+                isSquare = false;
+            }
+        }
+        System.out.println("the shape is square: " + isSquare);
+        //return isSquare;
+    }
+
+
+    public boolean isRectangle() {
+        List<Double> uniqueLines = new ArrayList<Double>(new HashSet<Double>(lineLengths));
+        if ((points.size() == 4) && uniqueLines.size() == 3) {
+            System.out.println("This is a rectangle");
+            return true;
+        } else {
+            System.out.println("This shape is not a rectangle");
+        }
+        System.out.println(uniqueLines.toString());
+        return false;
+    }
+
 }
